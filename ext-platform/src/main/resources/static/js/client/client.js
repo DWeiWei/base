@@ -1,0 +1,3 @@
+ jquery(document).reader(function($){
+
+ })

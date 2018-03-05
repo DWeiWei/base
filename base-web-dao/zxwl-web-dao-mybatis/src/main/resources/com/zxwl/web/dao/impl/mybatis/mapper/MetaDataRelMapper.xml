@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxwl.web.dao.MetaDataRelMapper">
+    <resultMap id="metaDataResultMap" type="com.zxwl.web.bean.MetaDataRel">
+        <id property="id" column="u_id" javaType="string" jdbcType="VARCHAR"/>
+            <result property="dataId" column="data_id" javaType="String" jdbcType="VARCHAR"/>
+            <result property="recordId" column="record_id" javaType="String" jdbcType="VARCHAR"/>
+            <result property="type" column="type" javaType="int" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <!--用于动态生成sql所需的配置-->
+    <sql id="config">
+        <bind name="resultMapId" value="'metaDataResultMap'"/>
+        <bind name="tableName" value="'s_metadata_rel'"/>
+    </sql>
+    <insert id="insert" parameterType="com.zxwl.web.bean.common.InsertParam" >
+        <include refid="config"/>
+        <include refid="BasicMapper.buildInsertSql"/>
+    </insert>
+
+    <delete id="delete" parameterType="com.zxwl.web.bean.common.DeleteParam">
+        <include refid="config"/>
+        <include refid="BasicMapper.buildDeleteSql"/>
+    </delete>
+
+    <delete id="deleteByRecordId" parameterType="com.zxwl.web.bean.common.DeleteParam">
+        delete from s_metadata_rel where record_id=#{record_id}
+    </delete>
+
+    <update id="update" parameterType="com.zxwl.web.bean.common.UpdateParam">
+        <include refid="config"/>
+        <include refid="BasicMapper.buildUpdateSql"/>
+    </update>
+
+    <select id="selectByPk" parameterType="string" resultMap="metaDataResultMap">
+        select * from s_metadata_rel where u_id=#{id}
+    </select>
+
+    <select id="selectByRecordId" parameterType="string" resultMap="metaDataResultMap">
+        select * from s_metadata_rel where record_id=#{record_id}
+    </select>
+
+    <select id="selectByRecordId2MD5" parameterType="string" resultType="string">
+        select data_id from s_metadata_rel where record_id=#{record_id}
+    </select>
+
+    <select id="selectByDataId" parameterType="string" resultMap="metaDataResultMap">
+        select * from s_metadata_rel where data_id=#{data_id}
+    </select>
+    <select id="select" parameterType="com.zxwl.web.bean.common.QueryParam" resultMap="metaDataResultMap">
+        <include refid="config"/>
+        <include refid="BasicMapper.buildSelectSql"/>
+    </select>
+
+    <select id="total" parameterType="com.zxwl.web.bean.common.QueryParam" resultType="int">
+        <include refid="config"/>
+        <include refid="BasicMapper.buildTotalSql"/>
+    </select>
+</mapper>
