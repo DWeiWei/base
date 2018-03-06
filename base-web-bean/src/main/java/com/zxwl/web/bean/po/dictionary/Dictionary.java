@@ -9,7 +9,7 @@ import java.util.Date;
  * @Date: 2018/3/6 14:23
  * @Description: 字典表
  */
-public class Dictionary  extends GenericPo<String> {
+public class Dictionary extends GenericPo<String> {
     /**
      * 父类ID
      */
@@ -56,4 +56,97 @@ public class Dictionary  extends GenericPo<String> {
      * 是否可用
      */
     private String status;
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getLevelCode() {
+        return levelCode;
+    }
+
+    public void setLevelCode(String levelCode) {
+        this.levelCode = levelCode;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public interface Property extends GenericPo.Property {
+        String parentId = "parentId";
+        String name = "name";
+        String value = "value";
+        String code = "code";
+        String levelCode = "levelCode";
+        String remark = "remark";
+        String createDate = "createDate";
+        String updateDate = "updateDate";
+        String creatorId = "creatorId";
+        String status = "status";
+    }
 }
